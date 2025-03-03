@@ -1,24 +1,30 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import sequelize from './config/database.js';
+import { dbController } from './controller/dbController.js';
+import { cityController } from './controller/cityController.js';
+import { staffController } from './controller/staffController.js';
+import { userController } from './controller/userController.js';
+import { imagesController } from './controller/imagesController.js';
+import { estateTypesController } from './controller/estateTypesController.js';
 
 
 
-require('dotenv').config();
-const express = require('express');
-const db = require('./config/database');
-const cityRoutes = require('./controller/cityController');
-
-
-
-const dbController = require('./controller/dbController');
-app.use('/db', dbController);
+dotenv.config();
 
 const app = express();
+const PORT = process.env.SERVER_PORT || 3000;
+app.use(express.urlencoded({ extended: true }))
+
+// Middleware
 app.use(express.json());
 
-// Routes
-app.use('/cities', cityRoutes);
+app.use(dbController)
+app.use(cityController)
+app.use(staffController)
+app.use('/images', imagesController)
+app.use('/users', userController)
+app.use('/estate_types', estateTypesController);
+
 
 // Test route
 app.get('/', (req, res) => {
@@ -26,5 +32,6 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+});

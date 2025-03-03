@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 
-export const staffModel = sequelize.define('Staff', {
+export const User = sequelize.define('User', {
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
@@ -15,28 +15,30 @@ export const staffModel = sequelize.define('Staff', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    position: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    image: {
-        type: DataTypes.STRING,  
-        allowNull: true
-    },
-    phone: {
-        type: DataTypes.INTEGER,  
-        allowNull: false,
-        unique: true
-    },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
-            isEmail: true  
+            isEmail: true  // Validerer, at det er en korrekt e-mail
         }
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    refresh_token: {
+        type: DataTypes.STRING,
+        allowNull: true 
+    },
+    is_active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true  
     }
 }, { 
-    tableName: 'staff', 
+    tableName: 'users', 
     timestamps: false
 });
+
+
