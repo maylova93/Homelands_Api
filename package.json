@@ -1,0 +1,31 @@
+{
+  "name": "homelands_api",
+  "version": "1.0.0",
+  "description": "API for Homelands svendeprøve",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maylova93/Homelands_Api.git"
+  },
+  "author": "Maylova93",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maylova93/Homelands_Api/issues"
+  },
+  "homepage": "https://github.com/maylova93/Homelands_Api#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.5"
+  }
+}
